@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="./styles/output.css" />
     <title>Guimaraes Burguer</title>
@@ -158,7 +159,10 @@
   <!--FIM MENU-->
 
   <!--MODAL CART-->
-  <div class="bg-black/60 w-full h-full fixed top-0 left-0 z-[99] items-center justify-center hidden "> <!--mude o hidden por flex para aparecer-->
+  <div 
+  class="bg-black/60 w-full h-full fixed top-0 left-0 z-[99] items-center justify-center hidden"
+  id="cart-modal"
+  > <!--mude o hidden por flex para aparecer-->
     <div class="bg-white p-5 rounded-md min-w-[90%] md:min-w-[600px]">
       <h2 class="text-center font-bold text-2x1 mb-2">Meu carrinho</h2>
       <div id="cart-items" class="flex justify-between mb-2 flex-col"></div>
@@ -193,5 +197,7 @@
     </button>
   </footer>
   <!--FIM BUTTON CART FOOTER-->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
