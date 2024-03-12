@@ -39,6 +39,7 @@ menu.addEventListener("click", function(event){
     const price = parseFloat(parentButton.getAttribute("data-price"))
 
     // adicionar no carrinho
+
     addToCart(name, price)
 
 
@@ -180,7 +181,7 @@ checkoutBtn.addEventListener("click", function(){
 function checkRestaurantOpen(){
     const data = new Date();
     const hora = data.getHours();
-    return hora >= 18 && hora < 22; // boolean true/false
+    return hora >= 15 && hora < 22; // boolean true/false
 
     
 }

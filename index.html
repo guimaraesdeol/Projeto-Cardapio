@@ -6,7 +6,13 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="./styles/output.css" />
-    <title>Guimaraes Burguer</title>
+    <!-- <link rel="shortcut icon" href="./assets/2.png" /> -->
+
+    <link rel="apple-touch-icon" sizes="180x180" href="./assets/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon-16x16.png">
+    <link rel="manifest" href="./assets/site.webmanifest">
+    <title>Guimarães Burguer</title>
 </head>
 <body>
   <!--HEADER-->
@@ -17,10 +23,14 @@
           alt="Logo DevBurguer"
           class="w-32 h-32 rounded-full shadow-lg hover:scale-110 duration-200"
         />
-        <h1 class="text-3xl mt-4 mb-2 font-bold text-white">Guimarães Burguer</h1>
-        <span class="text-white font-medium">Rua Afonso Pena, Campo Grande - MS</span>
+        <h1 class="text-4xl mt-4 mb-2 font-bold text-white">
+          Guimarães Burguer
+        </h1>
+  
+        <span class="text-white font-medium">Afonso Pena, Campo Grande - MS</span>
+  
         <div class="bg-green-600 px-4 py-1 rounded-lg mt-5" id="date-span">
-          <span class="text-white font-medium">Seg - Dom, 18:00 as 22:00</span>
+          <span class="text-white font-medium">Seg á Dom - 18:00 as 22:00</span>
         </div>
     </div>
   </header>
@@ -29,11 +39,15 @@
   <h2 class="text-2x1 md:text-3xl font-bold text-center mt-9 mb-6">Conheça nosso menu</h2>
   <!--INICIO MENU-->
   <div id="menu">
-    <main class="grid grid-cols-1 md:grid-cols-2 gap-7 md:gap-10 mx-auto max-w-7x1 px-2 mb-16">
+    <main class="grid grid-cols-1 md:grid-cols-2 gap-7 md:gap-10 mx-auto max-w-7xl px-2 mb-16">
 
       <!--PRODUTO ITEM-->
       <div class="flex gap-2">
-        <img src="./assets/hamb-1.png" alt="Hamburguer Smash" class="w-28 h-28 rounded-md hover:scale-110 hover:-rotate-2 duration-300"/>
+        <img 
+          src="./assets/hamb-1.png"
+          alt="Hamburguer Smash"
+          class="w-28 h-28 rounded-md hover:scale-110 hover:-rotate-2 duration-300"
+        />
         <div>
           <p class="font-bold">Hambúrguer Smash</p>
           <p class="text-sm">Pão leve de fermetação natural, burguer 160g, queijo prato e maionese da casa.</p> 
@@ -116,7 +130,7 @@
       </h2>
     </div>
     <!--GRID BEBIDAS-->
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-7 md:gap-10 mx-auto max-w-7x1 px-2 mb-16" id="menu">
+    <main class="grid grid-cols-1 md:grid-cols-2 gap-7 md:gap-10 mx-auto max-w-7xl px-2 mb-16">
       <!--BEBIDA ITEM-->
       <div class="flex gap-2 w-full">
         <img src="./assets/refri-1.png" alt="Coca Lata" class="w-28 h-28 rounded-md hover:scale-110 hover:-rotate-2 duration-300"/>
