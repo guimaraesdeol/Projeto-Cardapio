@@ -1,2 +1,3 @@
 # Projeto-Cardapio
- Projeto Cardápido - Sujeito Programador, refazendo tudo
+ Projeto Cardápido feito tudo do zero
+ Com base no canal Sujeito Programador
