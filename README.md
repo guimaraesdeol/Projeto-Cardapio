@@ -7,6 +7,7 @@ https://guimaraesburguer.netlify.app/ - Preview do site
 deixa uma star ai :p
 
 qualquer dúvida abrir uma issue
+para mudar a imagem de fundo, vá no arquivo tailwind.config.js
 
 ## O projeto tem horário de funcionamento no javascript, recomendo alterar ou remover, pois não sei quando o professor irá acessar o site. Quando o site está fora do horário do script, ele desabilita a opção de finalizar o carrinho.
 
