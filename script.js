@@ -8,6 +8,8 @@ const closeModalBtn= document.getElementById("close-modal-btn")
 const cartCounter  =document.getElementById("cart-count")
 const addressInput = document.getElementById("address")
 const addressWarn = document.getElementById("address-warn")
+const paymentSelect = document.getElementById("payment-method");
+const paymentWarn = document.getElementById("payment-warn");
 
 let cart = []; // array
 
@@ -138,44 +140,63 @@ addressInput.addEventListener("input", function(event){
 // finalizar pedido
 checkoutBtn.addEventListener("click", function(){
     const isOpen = checkRestaurantOpen();
+
     if(!isOpen){
         Toastify({
-            text: "Não estou atendendo no momento. Consulte o horário de funcionamento.",
+            text: "Não estou atendendo no momento.",
             duration: 3000,
             close: true,
-            gravity: "top", // `top` or `bottom`
-            position: "right", // `left`, `center` or `right`
-            stopOnFocus: true, // Prevents dismissing of toast on hover
-            style: {
-              background: "#ef4444",
-            },
-            onClick: function(){} // Callback after click
-          }).showToast();
+            gravity: "top",
+            position: "right",
+            style: { background: "#ef4444" },
+        }).showToast();
         return;
     }
+
     if(cart.length === 0) return;
+
     if (addressInput.value === ""){
-        addressWarn.style.display = "flex"
-        addressInput.classList.add("border-red-500")
+        addressWarn.style.display = "flex";
+        addressInput.classList.add("border-red-500");
         return;
     }
 
-    // enviar o pedido para api do zapzap
+    if (paymentSelect.value === ""){
+        paymentWarn.style.display = "flex";
+        paymentSelect.classList.add("border-red-500");
+        return;
+    }
+
     const cartItems = cart.map((item) => {
-        return (
-            ` ${item.name} - Quantidade: (${item.quantity}) - Preço: R$${item.price} |`
-        )
-    }).join("")
+        return `• ${item.name} — ${item.quantity}x — R$ ${(item.price * item.quantity).toFixed(2)}`
+    }).join("\n");
 
-    const message = encodeURIComponent(cartItems)
-    const phone = "000000000"
+    const total = cartTotal.textContent;
+    const message = encodeURIComponent(
+        `🛠️ *ORÇAMENTO – GUIMATECH*
 
-    window.open(`https://wa.me/${phone}?text=${message} Nome: ${addressInput.value}`, "_blank")
+        👤 Cliente: ${addressInput.value}
+
+        📋 Serviços:
+        ${cartItems}
+
+        💰 Total: ${total}
+        💳 Pagamento: ${paymentSelect.value}
+
+        📍 Atendimento via WhatsApp`
+    );
+
+    const phone = "000000000"; // SEU NÚMERO AQUI
+
+    window.open(
+        `https://wa.me/${phone}?text=${message} Nome: ${addressInput.value}`,
+        "_blank"
+    );
 
     cart.length = 0;
+    paymentSelect.value = "";
     updateCartModal();
-
-})
+});
 
 // verificar a hora e manipular o card horario
 function checkRestaurantOpen(){
