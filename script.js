@@ -115,7 +115,7 @@ function updateCartModal() {
     card.innerHTML = `
       <div class="min-w-0">
         <p class="font-semibold leading-tight truncate">${item.name}</p>
-        <p class="text-sm text-zinc-600 mt-1">Unit: ${unit}</p>
+        <p class="text-sm text-zinc-600 mt-1">Unidade: ${unit}</p>
         <p class="text-sm font-medium text-zinc-800 mt-1">Subtotal: ${lineTotal}</p>
       </div>
 
@@ -151,7 +151,7 @@ function updateCartModal() {
     cartItemsContainer.appendChild(card);
   });
   
-  
+
     cartTotal.textContent = total.toLocaleString("pt-BR",{
         style: "currency",
         currency: "BRL"
@@ -162,26 +162,50 @@ function updateCartModal() {
 }
 
 // função para remover item do carrinho
-cartItemsContainer.addEventListener("click", function (event){
-    if(event.target.classList.contains("remove-from-cart-btn")){
-        const name = event.target.getAttribute("data-name")
-        removeItemCart(name);
-    }
-})
+cartItemsContainer.addEventListener("click", (event) => {
+  const plus = event.target.closest(".qty-plus");
+  const minus = event.target.closest(".qty-minus");
+  const remove = event.target.closest(".remove-item");
 
-function removeItemCart(name){
-    const index = cart.findIndex(item => item.name === name);
-    if(index !== -1){
-        const item = cart[index];
-        if(item.quantity > 1){
-            item.quantity -= 1;
-            updateCartModal();
-            return;
-        }
-        cart.splice(index, 1);
-        updateCartModal();
-    }
-}
+  if (plus) {
+    const name = plus.getAttribute("data-name");
+    const item = cart.find((i) => i.name === name);
+    if (item) item.quantity += 1;
+    updateCartModal();
+    return;
+  }
+
+  if (minus) {
+    const name = minus.getAttribute("data-name");
+    const item = cart.find((i) => i.name === name);
+    if (!item) return;
+
+    if (item.quantity > 1) item.quantity -= 1;
+    else cart = cart.filter((i) => i.name !== name);
+
+    updateCartModal();
+    return;
+  }
+
+  if (remove) {
+    const name = remove.getAttribute("data-name");
+    cart = cart.filter((i) => i.name !== name);
+    updateCartModal();
+  }
+});
+// function removeItemCart(name){
+//     const index = cart.findIndex(item => item.name === name);
+//     if(index !== -1){
+//         const item = cart[index];
+//         if(item.quantity > 1){
+//             item.quantity -= 1;
+//             updateCartModal();
+//             return;
+//         }
+//         cart.splice(index, 1);
+//         updateCartModal();
+//     }
+// }
 
 addressInput.addEventListener("input", function(event){
     let inputValue = event.target.value;
