@@ -34,7 +34,7 @@
     @media (min-width:768px){ .combo-card{ width:30vw; } }
     @media (min-width:1024px){ .combo-card{ width:23%; } }
   </style>
-  
+
 </head>
 <body>
 
@@ -56,6 +56,7 @@
         <div class="bg-green-600 px-4 py-1 rounded-lg mt-5" id="date-span">
           <span class="text-white font-medium">Atendimento via Whatsapp</span>          
         </div>
+         <p class="text-white/80 text-sm mt-3" id="status-hours">Horário: 13:00 às 18:00</p>
     </div>
   </header>
   <!--FIM HEADER-->
@@ -271,37 +272,47 @@
   class="bg-black/60 w-full h-full fixed top-0 left-0 z-[99] items-center justify-center hidden"
   id="cart-modal"
   > <!--Mude o hidden por flex para aparecer-->
-    <div class="bg-white p-5 rounded-md min-w-[90%] md:min-w-[600px]">
-      <h2 class="text-center font-bold text-2x1 mb-2">Meu carrinho</h2>
-      <div id="cart-items" class="flex justify-between mb-2 flex-col"></div>
-      <p class="font-bold">Total: <span id="cart-total">0.00</span></p>
-      <p class="font-bold mt-4">Nome:</p>
-      <input
-       type="text"
-       placeholder="Digite seu nome completo"
-       id="address"
-       class="w-full border-2 p-1 rounded my-1"
-      />
-      <p class="text-red-500" hidden id="address-warn">Digite seu nome completo!</p>
-      <p class="font-bold mt-4">Forma de pagamento:</p>
-      <select 
-        id="payment-method"
-        class="w-full border-2 p-1 rounded my-1"
-      >
-        <option value="">Selecione</option>
-        <option value="Pix">Pix</option>
-        <option value="Débito">Cartão de débito</option>
-        <option value="Crédito">Cartão de crédito</option>
-        <option value="Dinheiro">Dinheiro</option>
-      </select>
-      <p class="text-red-500" hidden id="payment-warn">
-        Selecione a forma de pagamento!
-      </p>
-      <div class="flex items-center justify-between mt-5 w-full">
-        <button id="close-modal-btn">Fechar</button>
-        <button id="checkout-btn" class="bg-blue-600 text-white px-4 py-1 rounded">Finalizar pedido</button>
+    <div class="bg-white p-5 rounded-md w-[92%] md:w-[640px] max-h-[85vh] overflow-hidden flex flex-col">
+        <h2 class="text-center font-bold text-2xl mb-3">Meu orçamento</h2>
+
+        <!-- LISTA ROLÁVEL -->
+        <div id="cart-items" class="flex-1 overflow-y-auto pr-2 space-y-3"></div>
+
+        <!-- RODAPÉ FIXO (sempre visível) -->
+        <div class="pt-3 mt-3 border-t">
+          <p class="font-bold text-lg flex items-center justify-between">
+            Total:
+            <span id="cart-total">R$ 0,00</span>
+          </p>
+
+          <label class="font-bold mt-4 block" for="customer-name">Nome:</label>
+          <input
+            type="text"
+            placeholder="Digite seu nome completo"
+            id="customer-name"
+            autocomplete="name"
+            class="w-full border-2 p-2 rounded my-1"
+          />
+          <p class="text-red-500 text-sm" hidden id="name-warn">Digite seu nome completo!</p>
+
+          <label class="font-bold mt-4 block" for="payment-method">Forma de pagamento:</label>
+          <select id="payment-method" class="w-full border-2 p-2 rounded my-1">
+            <option value="">Selecione</option>
+            <option value="Pix">Pix</option>
+            <option value="Débito">Cartão de débito</option>
+            <option value="Crédito">Cartão de crédito</option>
+            <option value="Dinheiro">Dinheiro</option>
+          </select>
+          <p class="text-red-500 text-sm" hidden id="payment-warn">Selecione a forma de pagamento!</p>
+
+          <div class="flex items-center justify-between mt-4 w-full gap-3">
+            <button id="close-modal-btn" class="px-3 py-2 rounded border w-1/2">Fechar</button>
+            <button id="checkout-btn" class="bg-blue-600 text-white px-4 py-2 rounded w-1/2">
+              Finalizar pedido
+            </button>
+          </div>
+        </div>
       </div>
-    </div>
 
   </div>
   <!--FIM MODAL CART-->
