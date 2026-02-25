@@ -163,14 +163,14 @@ checkoutBtn.addEventListener("click", function(){
     // enviar o pedido para api do zapzap
     const cartItems = cart.map((item) => {
         return (
-            ` ${item.name} Quantidade: (${item.quantity}) Preço: R$${item.price} |`
+            ` ${item.name} - Quantidade: (${item.quantity}) - Preço: R$${item.price} |`
         )
     }).join("")
 
     const message = encodeURIComponent(cartItems)
     const phone = "000000000"
 
-    window.open(`https://wa.me/${phone}?text=${message} Endereço: ${addressInput.value}`, "_blank")
+    window.open(`https://wa.me/${phone}?text=${message} Nome: ${addressInput.value}`, "_blank")
 
     cart.length = 0;
     updateCartModal();
