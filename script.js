@@ -248,7 +248,27 @@ if(isOpen){
 }
 
 
+const track = document.getElementById("combo-track");
+const prevBtn = document.getElementById("combo-prev");
+const nextBtn = document.getElementById("combo-next");
 
+let scrollAmount = 0;
+
+function getScrollValue(){
+  const card = document.querySelector(".combo-card");
+  return card.offsetWidth + 24; // largura + gap
+}
+
+nextBtn.addEventListener("click", () => {
+  scrollAmount += getScrollValue();
+  track.style.transform = `translateX(-${scrollAmount}px)`;
+});
+
+prevBtn.addEventListener("click", () => {
+  scrollAmount -= getScrollValue();
+  if(scrollAmount < 0) scrollAmount = 0;
+  track.style.transform = `translateX(-${scrollAmount}px)`;
+});
 
 
 
