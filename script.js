@@ -74,22 +74,19 @@ menu.addEventListener("click", function(event){
 })
 
 // função p adicionar no carrrinho
-function addToCart(name, price){
-    const existingItem = cart.find(item => item.name === name)
+function addToCart(name, price) {
+  const existing = cart.find((i) => i.name === name);
+  if (existing) existing.quantity += 1;
+  else cart.push({ name, price, quantity: 1 });
 
-    if(existingItem){
-        // se o item existe muda apenas a quantidade (+1)
-        existingItem.quantity += 1;
-    }else{
-        cart.push({
-            name,
-            price,
-            quantity: 1,
-        })
-    }
+  Toastify({
+    text: "Adicionado ao orçamento!",
+    duration: 2000,
+    gravity: "top",
+    position: "right",
+  }).showToast();
 
-    updateCartModal()
-
+  updateCartModal();
 }
 
 
@@ -125,7 +122,8 @@ function updateCartModal(){
         currency: "BRL"
     });
     
-    cartCounter.innerHTML = cart.length;
+    const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+    cartCounter.textContent = totalItems;
 }
 
 // função para remover item do carrinho
@@ -217,7 +215,7 @@ checkoutBtn.addEventListener("click", function(){
     const phone = "000000000"; // SEU NÚMERO AQUI
 
     window.open(
-        `https://wa.me/${phone}?text=${message} Nome: ${addressInput.value}`,
+        `https://wa.me/${phone}?text=${message}`,
         "_blank"
     );
 
