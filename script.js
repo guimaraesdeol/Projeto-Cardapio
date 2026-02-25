@@ -248,9 +248,12 @@ checkoutBtn.addEventListener("click", function(){
         return;
     }
 
-    const cartItems = cart.map((item) => {
-        return `• ${item.name} — ${item.quantity}x — R$ ${(item.price * item.quantity).toFixed(2)}`
-    }).join("\n");
+    const cartItems = cart
+    .map((item) => {
+        const sub = (item.price * item.quantity).toFixed(2).replace(".", ",");
+        return `- ${item.quantity}x ${item.name} (R$ ${sub})`;
+    })
+    .join("\n");
 
     const orderNumber = generateOrderNumber();
     const dateTime = getFormattedDateTime();
