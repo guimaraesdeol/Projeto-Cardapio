@@ -6,8 +6,8 @@ const cartTotal = document.getElementById("cart-total")
 const checkoutBtn = document.getElementById("checkout-btn")
 const closeModalBtn= document.getElementById("close-modal-btn")
 const cartCounter  =document.getElementById("cart-count")
-const addressInput = document.getElementById("address")
-const addressWarn = document.getElementById("address-warn")
+const addressInput = document.getElementById("customer-name");
+const addressWarn = document.getElementById("name-warn");
 const paymentSelect = document.getElementById("payment-method");
 const paymentWarn = document.getElementById("payment-warn");
 
