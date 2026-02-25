@@ -306,6 +306,20 @@
        class="w-full border-2 p-1 rounded my-1"
       />
       <p class="text-red-500" hidden id="address-warn">Digite seu nome completo!</p>
+      <p class="font-bold mt-4">Forma de pagamento:</p>
+      <select 
+        id="payment-method"
+        class="w-full border-2 p-1 rounded my-1"
+      >
+        <option value="">Selecione</option>
+        <option value="Pix">Pix</option>
+        <option value="Débito">Cartão de débito</option>
+        <option value="Crédito">Cartão de crédito</option>
+        <option value="Dinheiro">Dinheiro</option>
+      </select>
+      <p class="text-red-500" hidden id="payment-warn">
+        Selecione a forma de pagamento!
+      </p>
       <div class="flex items-center justify-between mt-5 w-full">
         <button id="close-modal-btn">Fechar</button>
         <button id="checkout-btn" class="bg-blue-600 text-white px-4 py-1 rounded">Finalizar pedido</button>
