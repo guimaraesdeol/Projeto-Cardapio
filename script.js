@@ -165,7 +165,7 @@ checkoutBtn.addEventListener("click", function(){
 
     if(!isOpen){
         Toastify({
-            text: "Não estou atendendo no momento.",
+            text: "No momento estou fora do horário. Você pode enviar mesmo assim 🙂",
             duration: 3000,
             close: true,
             gravity: "top",
@@ -212,7 +212,7 @@ checkoutBtn.addEventListener("click", function(){
         Atendimento via WhatsApp`
     );
 
-    const phone = "000000000"; // SEU NÚMERO AQUI
+    const phone = "67991851966"; // SEU NÚMERO AQUI
 
     window.open(
         `https://wa.me/${phone}?text=${message}`,
