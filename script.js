@@ -91,32 +91,67 @@ function addToCart(name, price) {
 
 
 // atualiza o carrinho
-function updateCartModal(){
-    cartItemsContainer.innerHTML = "";
-    let total = 0;
-    cart.forEach(item => {
-        const cartItemElement = document.createElement("div");
-        cartItemElement.classList.add("flex", "justify-between", "mb-4", "flex-col")
+function updateCartModal() {
+  cartItemsContainer.innerHTML = "";
+  let total = 0;
 
-        cartItemElement.innerHTML = `
-            <div class="flex items-center justify-between">
-                <div>
-                    <p class="font-medium">${item.name}</p>
-                    <p>Qtd: ${item.quantity}</p>
-                    <p class="font-medium mt-2">R$ ${item.price.toFixed(2)}</p>
-                </div>
+  cart.forEach((item) => {
+    total += item.price * item.quantity;
 
-                <button class="remove-from-cart-btn" data-name="${item.name}">
-                    Remover
-                </button>
+    const lineTotal = (item.price * item.quantity).toLocaleString("pt-BR", {
+      style: "currency",
+      currency: "BRL",
+    });
 
-            </div>
-        `
-        total += item.price * item.quantity
+    const unit = item.price.toLocaleString("pt-BR", {
+      style: "currency",
+      currency: "BRL",
+    });
 
-        cartItemsContainer.appendChild(cartItemElement)
-    })
+    const card = document.createElement("div");
+    card.className =
+      "border rounded-xl p-3 shadow-sm flex items-start justify-between gap-3";
 
+    card.innerHTML = `
+      <div class="min-w-0">
+        <p class="font-semibold leading-tight truncate">${item.name}</p>
+        <p class="text-sm text-zinc-600 mt-1">Unit: ${unit}</p>
+        <p class="text-sm font-medium text-zinc-800 mt-1">Subtotal: ${lineTotal}</p>
+      </div>
+
+      <div class="flex flex-col items-end gap-2 shrink-0">
+        <div class="flex items-center gap-2">
+          <button
+            class="qty-minus px-2 py-1 rounded border"
+            data-name="${item.name}"
+            aria-label="Diminuir quantidade"
+            title="Diminuir"
+          >–</button>
+
+          <span class="font-bold w-6 text-center">${item.quantity}</span>
+
+          <button
+            class="qty-plus px-2 py-1 rounded border"
+            data-name="${item.name}"
+            aria-label="Aumentar quantidade"
+            title="Aumentar"
+          >+</button>
+        </div>
+
+        <button
+          class="remove-item text-red-600 text-sm underline"
+          data-name="${item.name}"
+          aria-label="Remover item"
+        >
+          Remover
+        </button>
+      </div>
+    `;
+
+    cartItemsContainer.appendChild(card);
+  });
+  
+  
     cartTotal.textContent = total.toLocaleString("pt-BR",{
         style: "currency",
         currency: "BRL"
