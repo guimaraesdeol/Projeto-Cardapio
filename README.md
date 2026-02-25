@@ -3,7 +3,7 @@ Catálogo com produtos feito tudo do zero, com base no projeto do canal Sujeito 
 
 [Preview do site ](https://guimatech.netlify.app/)
 
-Para mudar a imagem de fundo, vá no arquivo tailwind.config.js
+Para mudar a imagem de fundo, altere o nome no arquivo tailwind.config.js
 
 ## O projeto tem horário de funcionamento no javascript, recomendo alterar ou remover para testes. Quando o site está fora do horário do script, ele desabilita a opção de finalizar o carrinho.
 
