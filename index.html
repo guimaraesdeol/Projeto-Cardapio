@@ -191,101 +191,103 @@
         Combos
       </h2>
     </div>
-    <!--GRID 2-->
-    <main class="grid grid-cols-1 md:grid-cols-2 gap-7 md:gap-10 mx-auto max-w-7xl px-2 mb-16">
-      <!--PRODUTO ITEM-->
-      <div class="flex gap-2 w-full">
+<!-- CARROSSEL DE COMBOS -->
+<section class="max-w-7xl mx-auto px-2 mb-20">
+  <h2 class="text-2xl md:text-3xl font-bold text-center mt-9 mb-6">
+    Combos Especiais
+  </h2>
+
+  <div class="relative">
+    <div 
+      id="combo-carousel"
+      class="flex gap-5 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-4"
+    >
+
+      <!-- COMBO ITEM -->
+      <div class="min-w-[280px] md:min-w-[340px] bg-white rounded-lg shadow-lg p-4 snap-center">
         <img 
-          src="./assets/formatar.png"
-          alt="Formatar"
-          class="w-28 h-28 rounded-md hover:scale-110 hover:-rotate-2 duration-300"
+          src="./assets/gamer.png"
+          class="w-full h-40 object-cover rounded-md mb-3"
         />
-        <div class="w-full">
-          <p class="font-bold">🔵 Combo Performance Gamer</p>
-          <p class="text-sm">
-            Ideal para gamers e PCs de alto desempenho.<br>
-            Inclui:<br>
-            - Formatação Windows via BIOS<br>
-            - Otimização avançada para jogos<br>
-            - Atualização completa de drivers<br>
-            - Ajustes de desempenho<br>
-            - Monitoramento térmico
-          </p> 
-          <div class="flex items-center gap-2 justify-between mt-3">
-            <p class="font-bold text-lg">R$150,00</p>
-            <button class="bg-gray-900 px-5 rounded add-to-cart-btn"
-              data-name="Combo Performance Gamer"
-              data-price="150.00">
-              <i class="fa fa-cart-plus text-lg text-white"></i>
-            </button>
-          </div>
-        </div>
-      </div>
-      <!--FIM ITEM-->
 
-      <!--PRODUTO ITEM-->
-      <div class="flex gap-2 w-full">
+        <p class="font-bold text-lg text-center">🔵 Combo Performance Gamer</p>
+
+        <p class="text-sm mt-2 text-center">
+          Formatação + otimização avançada + drivers + ajustes gamer.
+        </p>
+
+        <p class="font-bold text-2xl text-center my-3 text-blue-600">
+          R$150,00
+        </p>
+
+        <button 
+          class="bg-gray-900 w-full py-2 rounded add-to-cart-btn"
+          data-name="Combo Performance Gamer"
+          data-price="150.00"
+        >
+          <i class="fa fa-cart-plus text-lg text-white"></i>
+          <span class="text-white ml-2">Adicionar</span>
+        </button>
+      </div>
+
+      <!-- COMBO ITEM -->
+      <div class="min-w-[280px] md:min-w-[340px] bg-white rounded-lg shadow-lg p-4 snap-center">
         <img 
-          src="./assets/formatar.png"
-          alt="Limpeza Premium"
-          class="w-28 h-28 rounded-md hover:scale-110 hover:-rotate-2 duration-300"
+          src="./assets/limpeza.png"
+          class="w-full h-40 object-cover rounded-md mb-3"
         />
-        <div class="w-full">
-          <p class="font-bold">🟠 Combo Limpeza + Formatação</p>
-          <p class="text-sm">
-            Ideal para PCs e notebooks com superaquecimento.<br>
-            Inclui:<br>
-            - Limpeza geral completa (desmontagem)<br>
-            - Limpeza de ventoinhas e dissipadores<br>
-            - Formatação Windows via BIOS
-          </p> 
-          <div class="flex items-center gap-2 justify-between mt-3">
-            <p class="font-bold text-lg">R$160,00</p>
-            <button class="bg-gray-900 px-5 rounded add-to-cart-btn"
-              data-name="Combo Limpeza + Formatação"
-              data-price="160.00">
-              <i class="fa fa-cart-plus text-lg text-white"></i>
-            </button>
-          </div>
-        </div>
-      </div>
-      <!--FIM ITEM-->
 
-      <!--PRODUTO ITEM-->
-      <div class="flex gap-2 w-full">
+        <p class="font-bold text-lg text-center">🟠 Combo Limpeza + Formatação</p>
+
+        <p class="text-sm mt-2 text-center">
+          Limpeza completa + troca térmica + formatação.
+        </p>
+
+        <p class="font-bold text-2xl text-center my-3 text-blue-600">
+          R$160,00
+        </p>
+
+        <button 
+          class="bg-gray-900 w-full py-2 rounded add-to-cart-btn"
+          data-name="Combo Limpeza + Formatação"
+          data-price="160.00"
+        >
+          <i class="fa fa-cart-plus text-lg text-white"></i>
+          <span class="text-white ml-2">Adicionar</span>
+        </button>
+      </div>
+
+      <!-- COMBO ITEM -->
+      <div class="min-w-[280px] md:min-w-[340px] bg-white rounded-lg shadow-lg p-4 snap-center">
         <img 
-          src="./assets/formatar.png"
-          alt="Combo Completo"
-          class="w-28 h-28 rounded-md hover:scale-110 hover:-rotate-2 duration-300"
+          src="./assets/completo.png"
+          class="w-full h-40 object-cover rounded-md mb-3"
         />
-        <div class="w-full">
-          <p class="font-bold">🟣 Combo Completo – Manutenção Total</p>
-          <p class="text-sm">
-            Manutenção completa para máximo desempenho.<br>
-            Inclui:<br>
-            - Formatação Windows via BIOS com backup<br>
-            - Limpeza geral completa<br>
-            - Troca de pasta térmica premium<br>
-            - Otimização avançada para jogos
-            - Atualização de BIOS.
-          </p> 
-          <div class="flex items-center gap-2 justify-between mt-3">
-            <p class="font-bold text-lg">R$250,00</p>
-            <button class="bg-gray-900 px-5 rounded add-to-cart-btn"
-              data-name="Combo Completo – Manutenção Total"
-              data-price="250.00">
-              <i class="fa fa-cart-plus text-lg text-white"></i>
-            </button>
-          </div>
-        </div>
+
+        <p class="font-bold text-lg text-center">🟣 Combo Completo</p>
+
+        <p class="text-sm mt-2 text-center">
+          Manutenção total + formatação + limpeza + pasta térmica + otimização.
+        </p>
+
+        <p class="font-bold text-2xl text-center my-3 text-blue-600">
+          R$250,00
+        </p>
+
+        <button 
+          class="bg-gray-900 w-full py-2 rounded add-to-cart-btn"
+          data-name="Combo Completo – Manutenção Total"
+          data-price="250.00"
+        >
+          <i class="fa fa-cart-plus text-lg text-white"></i>
+          <span class="text-white ml-2">Adicionar</span>
+        </button>
       </div>
-      <!--FIM ITEM-->
-
-
 
     </div>
-    <!--FIM GRID 2-->
-
+  </div>
+</section>
+<!-- FIM CARROSSEL -->
   </div>
   <!--FIM MENU-->
 
