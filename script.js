@@ -11,6 +11,30 @@ const addressWarn = document.getElementById("address-warn")
 const paymentSelect = document.getElementById("payment-method");
 const paymentWarn = document.getElementById("payment-warn");
 
+function generateOrderNumber(){
+    const now = new Date();
+
+    const year = now.getFullYear();
+    const month = String(now.getMonth() + 1).padStart(2, "0");
+    const day = String(now.getDate()).padStart(2, "0");
+
+    const random = Math.floor(Math.random() * 9000) + 1000;
+
+    return `GT-${year}${month}${day}-${random}`;
+}
+
+function getFormattedDateTime(){
+    const now = new Date();
+
+    const date = now.toLocaleDateString("pt-BR");
+    const time = now.toLocaleTimeString("pt-BR", {
+        hour: "2-digit",
+        minute: "2-digit"
+    });
+
+    return `${date} ${time}`;
+}
+
 let cart = []; // array
 
 // abrir o modal do carrinho
@@ -171,19 +195,23 @@ checkoutBtn.addEventListener("click", function(){
         return `• ${item.name} — ${item.quantity}x — R$ ${(item.price * item.quantity).toFixed(2)}`
     }).join("\n");
 
+    const orderNumber = generateOrderNumber();
+    const dateTime = getFormattedDateTime();
     const total = cartTotal.textContent;
     const message = encodeURIComponent(
-        `🛠️ *ORÇAMENTO – GUIMATECH*
+        `ORÇAMENTO - GUIMATECH
+        Nº: ${orderNumber}
+        Data: ${dateTime}
 
-        👤 Cliente: ${addressInput.value}
+        Cliente: ${addressInput.value}
 
-        📋 Serviços:
+        Serviços:
         ${cartItems}
 
-        💰 Total: ${total}
-        💳 Pagamento: ${paymentSelect.value}
+        Total: ${total}
+        Pagamento: ${paymentSelect.value}
 
-        📍 Atendimento via WhatsApp`
+        Atendimento via WhatsApp`
     );
 
     const phone = "000000000"; // SEU NÚMERO AQUI
