@@ -37,6 +37,18 @@ function getFormattedDateTime(){
 
 let cart = []; // array
 
+function saveCart() {
+  localStorage.setItem("guimatech_cart", JSON.stringify(cart));
+}
+
+function loadCart() {
+  const data = localStorage.getItem("guimatech_cart");
+  if (data) cart = JSON.parse(data);
+}
+
+loadCart();
+updateCartModal();
+
 // abrir o modal do carrinho
 cartBtn.addEventListener("click", function(){
     updateCartModal();
@@ -80,6 +92,7 @@ function addToCart(name, price) {
   }).showToast();
 
   updateCartModal();
+  saveCart();
 }
 
 // atualiza o carrinho
