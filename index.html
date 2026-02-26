@@ -20,7 +20,6 @@
 
     <title>GuimaTech</title>
 <style>
-  /* Pequeno CSS normal (sem @apply) */
   .combo-card{
     background:#fff;
     border-radius:12px;
@@ -32,15 +31,26 @@
     height:440px;
     transition:transform .3s;
 
-    /* IMPORTANTE: não deixa o card encolher no flex */
     flex: 0 0 auto;
     flex-shrink: 0;
   }
 
   .combo-card:hover{ transform: scale(1.02); }
 
-  .combo-img{ width:100%; height:160px; object-fit:cover; border-radius:8px; }
-  .combo-desc{ font-size:14px; text-align:center; margin-top:8px; flex:1; }
+  .combo-img{
+    width:100%;
+    height:160px;
+    object-fit:cover;
+    border-radius:8px;
+  }
+
+  .combo-desc{
+    font-size:14px;
+    text-align:center;
+    margin-top:8px;
+    flex:1;
+  }
+
   .combo-btn{
     background:#111827;
     color:#fff;
@@ -53,26 +63,36 @@
     gap:8px;
   }
 
-  /* Mobile: 1 por vez (ocupa 100% do container) */
+  /* MOBILE: 1 por vez */
   .combo-card{
-    width: 100%;
-    flex-basis: 100%;
+    width:100%;
+    flex-basis:100%;
   }
 
-  /* A partir do sm: volta pro seu layout */
+  /* SM: 2 por vez */
   @media (min-width:640px){
-    .combo-card{ width:45vw; flex-basis:45vw; }
+    .combo-card{
+      width:50%;
+      flex-basis:50%;
+    }
   }
 
+  /* MD: 3 por vez */
   @media (min-width:768px){
-    .combo-card{ width:30vw; flex-basis:30vw; }
+    .combo-card{
+      width:33.333%;
+      flex-basis:33.333%;
+    }
   }
 
+  /* LG: 4 por vez */
   @media (min-width:1024px){
-    .combo-card{ width:23%; flex-basis:23%; }
+    .combo-card{
+      width:25%;
+      flex-basis:25%;
+    }
   }
 </style>
-
 </head>
 <body>
 
