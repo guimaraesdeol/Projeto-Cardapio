@@ -282,8 +282,9 @@ if(isOpen){
 }
 
 /* =========================
-   CARROSSEL (COM LIMITE)
+   CARROSSEL (COM LIMITE + SETAS DINÂMICAS)
    ========================= */
+
 const track = document.getElementById("combo-track");
 const prevBtn = document.getElementById("combo-prev");
 const nextBtn = document.getElementById("combo-next");
@@ -301,12 +302,35 @@ function getScrollValue() {
 }
 
 function getMaxScroll() {
-  const container = track.parentElement; // wrapper do overflow-hidden/overflow-x
+  const container = track.parentElement;
   return Math.max(0, track.scrollWidth - container.clientWidth);
+}
+
+function updateButtons() {
+  const maxScroll = getMaxScroll();
+
+  // Esquerda
+  if (scrollAmount <= 0) {
+    prevBtn.style.opacity = "0";
+    prevBtn.style.pointerEvents = "none";
+  } else {
+    prevBtn.style.opacity = "1";
+    prevBtn.style.pointerEvents = "auto";
+  }
+
+  // Direita
+  if (scrollAmount >= maxScroll) {
+    nextBtn.style.opacity = "0";
+    nextBtn.style.pointerEvents = "none";
+  } else {
+    nextBtn.style.opacity = "1";
+    nextBtn.style.pointerEvents = "auto";
+  }
 }
 
 function updateCarouselPosition() {
   track.style.transform = `translateX(-${scrollAmount}px)`;
+  updateButtons();
 }
 
 nextBtn.addEventListener("click", () => {
@@ -320,9 +344,12 @@ prevBtn.addEventListener("click", () => {
   updateCarouselPosition();
 });
 
-// ✅ Recalcula ao mudar tamanho da tela (evita ficar "fora do limite")
+// Ajusta quando redimensiona a tela
 window.addEventListener("resize", () => {
   const maxScroll = getMaxScroll();
   if (scrollAmount > maxScroll) scrollAmount = maxScroll;
   updateCarouselPosition();
 });
+
+// Inicializa estado correto ao carregar
+updateCarouselPosition();
