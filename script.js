@@ -261,18 +261,19 @@ checkoutBtn.addEventListener("click", function(){
     const total = cartTotal.textContent;
     const message = encodeURIComponent(
         `ORÇAMENTO - GUIMATECH
-Nº: ${orderNumber}
-Data: ${dateTime}
+        Nº: ${orderNumber}
+        Data: ${dateTime}
 
-Cliente: ${addressInput.value}
+        Cliente: ${addressInput.value}
 
-Serviços:
-${cartItems}
+        Itens:
+        ${cartItems}
 
-Total: ${total}
-Pagamento: ${paymentSelect.value}
+        Total: ${total}
+        Pagamento: ${paymentSelect.value}
 
-Atendimento via WhatsApp`
+        Cidade: Campo Grande - MS
+        Obs: Prazo e disponibilidade confirmados no atendimento.`
     );
 
     const phone = "67991851966"; // SEU NÚMERO AQUI
