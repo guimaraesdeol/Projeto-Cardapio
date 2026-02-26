@@ -186,14 +186,23 @@ cartItemsContainer.addEventListener("click", (event) => {
   }
 });
 
+// ✅ Nome: ao digitar, remove erro
 addressInput.addEventListener("input", function(event){
     let inputValue = event.target.value;
 
-    if(inputValue !== ""){
+    if(inputValue.trim() !== ""){
         addressInput.classList.remove("border-red-500")
         addressWarn.style.display = "none"
     }
-})
+});
+
+// ✅ Pagamento: ao selecionar, remove erro (NOVO)
+paymentSelect.addEventListener("change", function(){
+    if(paymentSelect.value !== ""){
+        paymentSelect.classList.remove("border-red-500");
+        paymentWarn.style.display = "none";
+    }
+});
 
 // finalizar pedido
 checkoutBtn.addEventListener("click", function(){
@@ -213,7 +222,7 @@ checkoutBtn.addEventListener("click", function(){
 
     if(cart.length === 0) return;
 
-    if (addressInput.value === ""){
+    if (addressInput.value.trim() === ""){
         addressWarn.style.display = "flex";
         addressInput.classList.add("border-red-500");
         return;
@@ -284,7 +293,6 @@ if(isOpen){
 /* =========================
    CARROSSEL (COM LIMITE + SETAS DINÂMICAS)
    ========================= */
-
 const track = document.getElementById("combo-track");
 const prevBtn = document.getElementById("combo-prev");
 const nextBtn = document.getElementById("combo-next");
@@ -309,7 +317,6 @@ function getMaxScroll() {
 function updateButtons() {
   const maxScroll = getMaxScroll();
 
-  // Esquerda
   if (scrollAmount <= 0) {
     prevBtn.style.opacity = "0";
     prevBtn.style.pointerEvents = "none";
@@ -318,7 +325,6 @@ function updateButtons() {
     prevBtn.style.pointerEvents = "auto";
   }
 
-  // Direita
   if (scrollAmount >= maxScroll) {
     nextBtn.style.opacity = "0";
     nextBtn.style.pointerEvents = "none";
@@ -344,12 +350,10 @@ prevBtn.addEventListener("click", () => {
   updateCarouselPosition();
 });
 
-// Ajusta quando redimensiona a tela
 window.addEventListener("resize", () => {
   const maxScroll = getMaxScroll();
   if (scrollAmount > maxScroll) scrollAmount = maxScroll;
   updateCarouselPosition();
 });
 
-// Inicializa estado correto ao carregar
 updateCarouselPosition();
