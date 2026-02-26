@@ -42,23 +42,23 @@
 
   .combo-card:hover{ transform: scale(1.02); }
 
-  /* ✅ não corta e não “zooma”: só redimensiona proporcionalmente */
+  /* imagem permanece igual */
   .combo-img{
     width:100%;
     height:160px;
-    object-fit: contain;       /* era cover */
-    object-position: center;
+    object-fit:contain;
+    object-position:center;
     border-radius:8px;
-
-    /* opcional (fica bonito quando sobra espaço)
-    background:#f4f4f5;
-    padding:8px; */
     display:block;
+  }
+
+  /* ✅ centraliza apenas título e descrição */
+  .combo-card p{
+    text-align:center;
   }
 
   .combo-desc{
     font-size:14px;
-    text-align:center;
     margin-top:8px;
     flex:1;
   }
