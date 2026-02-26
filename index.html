@@ -31,17 +31,29 @@
     height:440px;
     transition:transform .3s;
 
+    /* não deixa o card encolher */
     flex: 0 0 auto;
     flex-shrink: 0;
+
+    /* MOBILE: 1 por vez */
+    width:100%;
+    flex-basis:100%;
   }
 
   .combo-card:hover{ transform: scale(1.02); }
 
+  /* ✅ não corta e não “zooma”: só redimensiona proporcionalmente */
   .combo-img{
     width:100%;
     height:160px;
-    object-fit:cover;
+    object-fit: contain;       /* era cover */
+    object-position: center;
     border-radius:8px;
+
+    /* opcional (fica bonito quando sobra espaço) */
+    background:#f4f4f5;
+    padding:8px;
+    display:block;
   }
 
   .combo-desc{
@@ -63,34 +75,19 @@
     gap:8px;
   }
 
-  /* MOBILE: 1 por vez */
-  .combo-card{
-    width:100%;
-    flex-basis:100%;
-  }
-
   /* SM: 2 por vez */
   @media (min-width:640px){
-    .combo-card{
-      width:50%;
-      flex-basis:50%;
-    }
+    .combo-card{ width:50%; flex-basis:50%; }
   }
 
   /* MD: 3 por vez */
   @media (min-width:768px){
-    .combo-card{
-      width:33.333%;
-      flex-basis:33.333%;
-    }
+    .combo-card{ width:33.333%; flex-basis:33.333%; }
   }
 
   /* LG: 4 por vez */
   @media (min-width:1024px){
-    .combo-card{
-      width:25%;
-      flex-basis:25%;
-    }
+    .combo-card{ width:25%; flex-basis:25%; }
   }
 </style>
 </head>
