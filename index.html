@@ -25,17 +25,13 @@
     border-radius:12px;
     box-shadow:0 10px 25px rgba(0,0,0,.12);
     padding:16px;
-
     display:flex;
     flex-direction:column;
-    justify-content:center;   /* centraliza vertical */
-    align-items:center;       /* centraliza horizontal */
-    text-align:center;        /* centraliza texto */
-
+    justify-content:space-between;
     height:440px;
     transition:transform .3s;
 
-    /* impede encolhimento no carrossel */
+    /* não deixa o card encolher */
     flex: 0 0 auto;
     flex-shrink: 0;
 
@@ -44,27 +40,27 @@
     flex-basis:100%;
   }
 
-  .combo-card:hover{
-    transform: scale(1.02);
-  }
+  .combo-card:hover{ transform: scale(1.02); }
 
-  /* imagem não corta nem "zooma" */
+  /* ✅ não corta e não “zooma”: só redimensiona proporcionalmente */
   .combo-img{
     width:100%;
     height:160px;
-    object-fit:contain;      /* não corta */
-    object-position:center;
+    object-fit: contain;       /* era cover */
+    object-position: center;
     border-radius:8px;
 
-    background:#f4f4f5;      /* opcional, pode remover se quiser */
-    padding:8px;             /* opcional */
-    margin-bottom:12px;
+    /* opcional (fica bonito quando sobra espaço)
+    background:#f4f4f5;
+    padding:8px; */
+    display:block;
   }
 
   .combo-desc{
     font-size:14px;
+    text-align:center;
     margin-top:8px;
-    margin-bottom:12px;
+    flex:1;
   }
 
   .combo-btn{
@@ -77,35 +73,21 @@
     justify-content:center;
     align-items:center;
     gap:8px;
-    transition:background .2s;
-  }
-
-  .combo-btn:hover{
-    background:#1f2937;
   }
 
   /* SM: 2 por vez */
   @media (min-width:640px){
-    .combo-card{
-      width:50%;
-      flex-basis:50%;
-    }
+    .combo-card{ width:50%; flex-basis:50%; }
   }
 
   /* MD: 3 por vez */
   @media (min-width:768px){
-    .combo-card{
-      width:33.333%;
-      flex-basis:33.333%;
-    }
+    .combo-card{ width:33.333%; flex-basis:33.333%; }
   }
 
   /* LG: 4 por vez */
   @media (min-width:1024px){
-    .combo-card{
-      width:25%;
-      flex-basis:25%;
-    }
+    .combo-card{ width:25%; flex-basis:25%; }
   }
 </style>
 </head>
@@ -129,7 +111,7 @@
         <div class="bg-green-600 px-4 py-1 rounded-lg mt-5" id="date-span">
           <span class="text-white font-medium">Atendimento via Whatsapp</span>          
         </div>
-         <p class="text-white/80 text-sm mt-3" id="status-hours">Horário: 13:00 às 18:00 - Seg à Sex  </p>
+         <p class="text-white/80 text-sm mt-3" id="status-hours">Horário: 13:00 às 18:00 - Seg à Sex</p>
     </div>
   </header>
   <!--FIM HEADER-->
