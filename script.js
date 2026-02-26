@@ -50,30 +50,23 @@ cartModal.addEventListener("click",function(event){
     }
 })
 
-
 // fechar pelo botao fechar
 closeModalBtn.addEventListener("click", function(){
     cartModal.style.display = "none"
 })
 
 menu.addEventListener("click", function(event){
-   // console.log(event.target) - PARA PEGAR O TARGET DE QUALQUER ITEM
    let parentButton = event.target.closest(".add-to-cart-btn")
    
    if(parentButton){
     const name = parentButton.getAttribute("data-name")
     const price = parseFloat(parentButton.getAttribute("data-price"))
 
-    // adicionar no carrinho
-
     addToCart(name, price)
-
-
-
    }
 })
 
-// função p adicionar no carrrinho
+// função p adicionar no carrinho
 function addToCart(name, price) {
   const existing = cart.find((i) => i.name === name);
   if (existing) existing.quantity += 1;
@@ -88,7 +81,6 @@ function addToCart(name, price) {
 
   updateCartModal();
 }
-
 
 // atualiza o carrinho
 function updateCartModal() {
@@ -152,16 +144,16 @@ function updateCartModal() {
   });
   
 
-    cartTotal.textContent = total.toLocaleString("pt-BR",{
-        style: "currency",
-        currency: "BRL"
-    });
-    
-    const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-    cartCounter.textContent = totalItems;
+  cartTotal.textContent = total.toLocaleString("pt-BR",{
+      style: "currency",
+      currency: "BRL"
+  });
+  
+  const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+  cartCounter.textContent = totalItems;
 }
 
-// função para remover item do carrinho
+// controles + / - / remover
 cartItemsContainer.addEventListener("click", (event) => {
   const plus = event.target.closest(".qty-plus");
   const minus = event.target.closest(".qty-minus");
@@ -193,19 +185,6 @@ cartItemsContainer.addEventListener("click", (event) => {
     updateCartModal();
   }
 });
-// function removeItemCart(name){
-//     const index = cart.findIndex(item => item.name === name);
-//     if(index !== -1){
-//         const item = cart[index];
-//         if(item.quantity > 1){
-//             item.quantity -= 1;
-//             updateCartModal();
-//             return;
-//         }
-//         cart.splice(index, 1);
-//         updateCartModal();
-//     }
-// }
 
 addressInput.addEventListener("input", function(event){
     let inputValue = event.target.value;
@@ -214,8 +193,6 @@ addressInput.addEventListener("input", function(event){
         addressInput.classList.remove("border-red-500")
         addressWarn.style.display = "none"
     }
-
-    //
 })
 
 // finalizar pedido
@@ -260,18 +237,18 @@ checkoutBtn.addEventListener("click", function(){
     const total = cartTotal.textContent;
     const message = encodeURIComponent(
         `ORÇAMENTO - GUIMATECH
-        Nº: ${orderNumber}
-        Data: ${dateTime}
+Nº: ${orderNumber}
+Data: ${dateTime}
 
-        Cliente: ${addressInput.value}
+Cliente: ${addressInput.value}
 
-        Serviços:
-        ${cartItems}
+Serviços:
+${cartItems}
 
-        Total: ${total}
-        Pagamento: ${paymentSelect.value}
+Total: ${total}
+Pagamento: ${paymentSelect.value}
 
-        Atendimento via WhatsApp`
+Atendimento via WhatsApp`
     );
 
     const phone = "67991851966"; // SEU NÚMERO AQUI
@@ -291,8 +268,6 @@ function checkRestaurantOpen(){
     const data = new Date();
     const hora = data.getHours();
     return hora >= 0 && hora < 24; // boolean true/false
-
-    
 }
 
 const spanItem = document.getElementById("date-span")
@@ -304,32 +279,50 @@ if(isOpen){
 }else{
     spanItem.classList.remove("bg-green-600")
     spanItem.classList.add("bg-red-500")
-
 }
 
-
+/* =========================
+   CARROSSEL (COM LIMITE)
+   ========================= */
 const track = document.getElementById("combo-track");
 const prevBtn = document.getElementById("combo-prev");
 const nextBtn = document.getElementById("combo-next");
 
 let scrollAmount = 0;
 
-function getScrollValue(){
+function getScrollValue() {
   const card = document.querySelector(".combo-card");
-  return card.offsetWidth + 24; // largura + gap
+  if (!card) return 0;
+
+  const styles = getComputedStyle(track);
+  const gap = parseFloat(styles.columnGap || styles.gap || "0");
+
+  return card.getBoundingClientRect().width + gap;
+}
+
+function getMaxScroll() {
+  const container = track.parentElement; // wrapper do overflow-hidden/overflow-x
+  return Math.max(0, track.scrollWidth - container.clientWidth);
+}
+
+function updateCarouselPosition() {
+  track.style.transform = `translateX(-${scrollAmount}px)`;
 }
 
 nextBtn.addEventListener("click", () => {
-  scrollAmount += getScrollValue();
-  track.style.transform = `translateX(-${scrollAmount}px)`;
+  const maxScroll = getMaxScroll();
+  scrollAmount = Math.min(scrollAmount + getScrollValue(), maxScroll);
+  updateCarouselPosition();
 });
 
 prevBtn.addEventListener("click", () => {
-  scrollAmount -= getScrollValue();
-  if(scrollAmount < 0) scrollAmount = 0;
-  track.style.transform = `translateX(-${scrollAmount}px)`;
+  scrollAmount = Math.max(scrollAmount - getScrollValue(), 0);
+  updateCarouselPosition();
 });
 
-
-
-
+// ✅ Recalcula ao mudar tamanho da tela (evita ficar "fora do limite")
+window.addEventListener("resize", () => {
+  const maxScroll = getMaxScroll();
+  if (scrollAmount > maxScroll) scrollAmount = maxScroll;
+  updateCarouselPosition();
+});
