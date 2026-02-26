@@ -305,6 +305,10 @@ if(isOpen){
     spanItem.classList.add("bg-red-500")
 }
 
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") cartModal.style.display = "none";
+});
+
 /* =========================
    CARROSSEL (COM LIMITE + SETAS DINÂMICAS)
    ========================= */
