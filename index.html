@@ -19,21 +19,59 @@
     <meta property="og:type" content="website">
 
     <title>GuimaTech</title>
+<style>
+  /* Pequeno CSS normal (sem @apply) */
+  .combo-card{
+    background:#fff;
+    border-radius:12px;
+    box-shadow:0 10px 25px rgba(0,0,0,.12);
+    padding:16px;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    height:440px;
+    transition:transform .3s;
 
-      <style>
-    /* Pequeno CSS normal (sem @apply) */
-    .combo-card{ background:#fff; border-radius:12px; box-shadow:0 10px 25px rgba(0,0,0,.12); padding:16px; display:flex; flex-direction:column; justify-content:space-between; height:440px; transition:transform .3s; }
-    .combo-card:hover{ transform: scale(1.02); }
-    .combo-img{ width:100%; height:160px; object-fit:cover; border-radius:8px; }
-    .combo-desc{ font-size:14px; text-align:center; margin-top:8px; flex:1; }
-    .combo-btn{ background:#111827; color:#fff; width:100%; padding:10px 0; border-radius:10px; display:flex; justify-content:center; align-items:center; gap:8px; }
+    /* IMPORTANTE: não deixa o card encolher no flex */
+    flex: 0 0 auto;
+    flex-shrink: 0;
+  }
 
-    /* Larguras responsivas do card */
-    .combo-card{ width:85vw; }
-    @media (min-width:640px){ .combo-card{ width:45vw; } }
-    @media (min-width:768px){ .combo-card{ width:30vw; } }
-    @media (min-width:1024px){ .combo-card{ width:23%; } }
-  </style>
+  .combo-card:hover{ transform: scale(1.02); }
+
+  .combo-img{ width:100%; height:160px; object-fit:cover; border-radius:8px; }
+  .combo-desc{ font-size:14px; text-align:center; margin-top:8px; flex:1; }
+  .combo-btn{
+    background:#111827;
+    color:#fff;
+    width:100%;
+    padding:10px 0;
+    border-radius:10px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:8px;
+  }
+
+  /* Mobile: 1 por vez (ocupa 100% do container) */
+  .combo-card{
+    width: 100%;
+    flex-basis: 100%;
+  }
+
+  /* A partir do sm: volta pro seu layout */
+  @media (min-width:640px){
+    .combo-card{ width:45vw; flex-basis:45vw; }
+  }
+
+  @media (min-width:768px){
+    .combo-card{ width:30vw; flex-basis:30vw; }
+  }
+
+  @media (min-width:1024px){
+    .combo-card{ width:23%; flex-basis:23%; }
+  }
+</style>
 
 </head>
 <body>
